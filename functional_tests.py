@@ -1,26 +1,38 @@
 from selenium import webdriver
 
-browser = webdriver.Firefox()
+import unittest
 
-# Someone heard about a cool online to-do app. He goes to check out its homepage
-browser.get("http://localhost:8000")
+class NewVisitorTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.browser = webdriver.Firefox()
+    
+    def tearDown(self) -> None:
+        # Satisfied, he closes the browser.
+        self.browser.quit()
 
-# He notices the page title and the header mention to-do lists
-assert "To-Do" in browser.title
+    def test_can_start_a_list_and_retrieve_it_later(self) -> None:
+        # Someone heard about a cool online to-do app. He goes to check out its homepage
+        self.browser.get("http://localhost:8000")
 
-# He wants to enter a to-do item straight away.
+        # He notices the page title and the header mention to-do lists
+        self.assertIn("To-Do", self.browser.title)
+        self.fail("Finish the test!")
 
-# So he types "Buy eggs" into a text box.
+        # He wants to enter a to-do item straight away.
 
-# When he hits enter, the page updates, and now the page lists "1: Buy eggs" as an item in to-do list.
+        # So he types "Buy eggs" into a text box.
 
-# There is still a text box inviting he to add another item to the to-do list. So he enters "Learn TDD".
+        # When he hits enter, the page updates, and now the page lists "1: Buy eggs" as an item in to-do list.
 
-# The page updates again, and now shows two items on his list.
+        # There is still a text box inviting he to add another item to the to-do list. So he enters "Learn TDD".
 
-# The site has generated a uniqe URL for him.
+        # The page updates again, and now shows two items on his list.
 
-# He visites the URL and his to-do list is still there.
+        # The site has generated a uniqe URL for him.
 
-# Satisfied, he closes the browser.
-browser.quit()
+        # He visites the URL and his to-do list is still there.
+
+
+if __name__ == '__main__':
+    unittest.main()
+
