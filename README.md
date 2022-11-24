@@ -1,5 +1,8 @@
 This is a TODO-list web project.
 
+I am still learning TDD methodologies and programing this demo project while I am reading the book[「Obey the Testing Goat!」](http://www.obeythetestinggoat.com/). I record some notes and reflections here, like TDD concepts and methodologies.
+
+
 # TDD methodologies
 - 编写1个用例-运行测试并按预期失败-编写最少代码实现功能并运行测试直至通过。重复这个步骤，直至没有可写的用例。
 - User Story: A description of how the application will work from the point of view of the user. Used to structure a functional test.
@@ -29,3 +32,23 @@ Once we have a functional test that fails, we start to think about how to write 
 Once we have a failing unit test, we write the smallest amount of application code we can, just enough to get the unit test to pass. We may iterate between steps 2 and 3 a few times, until we think the functional test will get a little further.
 
 Now we can rerun our functional tests and see if they pass, or get a little further. That may prompt us to write some new unit tests, and some new code, and so on.
+
+
+# Useful TDD Concepts
+- Regression 逻辑回归
+    - When new code breaks some aspect of the application which used to work.
+
+- Unexpected failure
+    - When a test fails in a way we weren’t expecting. This either means that we’ve made a mistake in our tests, or that the tests have helped us find a regression, and we need to fix something in our code.
+
+- Red/Green/Refactor
+    - Another way of describing the TDD process. Write a test and see it fail (Red), write some code to get it to pass (Green), then Refactor to improve the implementation.
+
+- Triangulation  从更多角度写测试用例，避免业务代码硬编码
+    - Adding a test case with a new specific example for some existing code, to justify generalising the implementation (which may be a "cheat" until that point).
+
+- Three strikes and refactor
+    - A rule of thumb for when to remove duplication from code. When two pieces of code look very similar, it often pays to wait until you see a third use case, so that you’re more sure about what part of the code really is the common, re-usable part to refactor out.
+
+- The scratchpad to-do list
+    - A place to write down things that occur to us as we’re coding, so that we can finish up what we’re doing and come back to them later.
