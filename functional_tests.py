@@ -11,6 +11,11 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self) -> None:
         # Satisfied, he closes the browser.
         self.browser.quit()
+    
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
 
     def test_can_start_a_list_and_retrieve_it_later(self) -> None:
         # Someone heard about a cool online to-do app. He goes to check out its homepage
@@ -34,10 +39,7 @@ class NewVisitorTest(unittest.TestCase):
         # When he hits enter, the page updates, and now the page lists "1: Buy eggs" as an item in to-do list.
         inputbox.send_keys(Keys.ENTER)
         time.sleep(3)
-
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')  
-        self.assertIn('1: Buy eggs', [row.text for row in rows])
+        self.check_for_row_in_list_table('1: Buy eggs')
 
         # There is still a text box inviting he to add another item to the to-do list. So he enters "Learn TDD".
         inputbox = self.browser.find_element_by_id("id_new_item")
@@ -45,10 +47,8 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')  
-        self.assertIn('1: Buy eggs', [row.text for row in rows])
-        self.assertIn('2: Learn TDD', [row.text for row in rows])
+        self.check_for_row_in_list_table('1: Buy eggs')
+        self.check_for_row_in_list_table('2: Learn TDD')
 
         self.fail('Finish the test!')
         # The page updates again, and now shows two items on his list.
