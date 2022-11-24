@@ -11,6 +11,7 @@ This is a TODO-list web project.
 - FT(functional test): Tests that use Selenium let us drive a real web browser, so they really let us see how the application functions from the user’s point of view. The main point is that these kinds of tests look at how the whole application functions, from the outside. Another term is black box test, because the test doesn’t know anything about the internals of the system under test. （功能测试是从用户使用角度去验证功能可用。有点类似BDD了）
 - FTs should have a human-readable story that we can follow. We make it explicit using comments that accompany the test code. When creating a new FT, we can write the comments first, to capture the key points of the User Story. (在注释中描述功能)
 - We’ll see that Django uses them a lot in the files it generates for us to use as a way of suggesting helpful bits of its API. And, of course, we use comments to explain the User Story in our functional tests. (注释的用途。不要去重复代码)
+- There’s a principle called Don’t Repeat Yourself (DRY), which we like to apply by following the mantra three strikes and refactor. You can copy and paste code once, and it may be premature to try to remove the duplication it causes, but once you get three occurrences, it’s time to remove duplication.  (DRY)
 
 # Unit Test
 - The basic distinction is that functional tests test the application from the outside, from the point of view of the user. Unit tests test the application from the inside, from the point of view of the programmer.
