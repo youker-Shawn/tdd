@@ -8,6 +8,9 @@ I am still learning TDD methodologies and programing this demo project while I a
 - User Story: A description of how the application will work from the point of view of the user. Used to structure a functional test.
 - Expected failure: When a test fails in the way that we expected it to.
 - TDD and agile software development methodologies often go together, and one of the things we often talk about is the minimum viable app.
+- Ensuring test isolation and managing global state
+Different tests shouldn’t affect one another. This means we need to reset any permanent state at the end of each test. Django’s test runner helps us do this by creating a test database, which it wipes clean in between each test.
+
 
 
 # Functional Test == Acceptance Test == End-to-End Test == black box test
