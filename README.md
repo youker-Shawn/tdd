@@ -55,3 +55,16 @@ Now we can rerun our functional tests and see if they pass, or get a little furt
 
 - The scratchpad to-do list
     - A place to write down things that occur to us as we’re coding, so that we can finish up what we’re doing and come back to them later.
+
+# Tips
+Use a tests folder
+- Just as you use multiple files to hold your application code, you should split your tests out into multiple files.
+
+
+Don’t refactor against failing tests
+- In general!
+- But the FT you’re currently working on doesn’t count.
+- You can occasionally put a skip on a test which is testing something you haven’t written yet.
+- More commonly, make a note of the refactor you want to do, finish what you’re working on, and do the refactor a little later, when you’re back to a working state.
+- Don’t forget to remove any skips before you commit your code! You should always review your diffs line by line to catch things like this.
+
