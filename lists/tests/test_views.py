@@ -1,4 +1,5 @@
 from django.test import TestCase
+from lists.forms import ItemForm
 from lists.models import Item, List
 from django.utils.html import escape
 
@@ -16,6 +17,9 @@ class HomePageTest(TestCase):
         # 而不是去：进行复杂地decode，去除换行空白制服等，最后比较字符串相等。
         self.assertTemplateUsed(response, "home.html")
     
+    def test_home_page_uses_item_form(self):
+        response = self.client.get('/')
+        self.assertIsInstance(response.context['form'], ItemForm)
 
 class ListViewTest(TestCase):
     def test_uses_list_template(self):
