@@ -15,11 +15,8 @@ class NewVisitorTest(FunctionalTest):
         self.assertIn("To-Do", header_text)
 
         # He wants to enter a to-do item straight away.
-        inputbox = self.browser.find_element_by_id("id_new_item")
-        self.assertEqual(
-            inputbox.get_attribute("placeholder"),
-            "Enter a to-do item"
-        )
+        inputbox = self.browser.find_element_by_id("id_text")
+        self.assertEqual(inputbox.get_attribute("placeholder"), "Enter a to-do item")
 
         # So he types "Buy eggs" into a text box.
         inputbox.send_keys("Buy eggs")
@@ -29,7 +26,7 @@ class NewVisitorTest(FunctionalTest):
         self.wait_for_row_in_list_table('1: Buy eggs')
 
         # There is still a text box inviting he to add another item to the to-do list. So he enters "Learn TDD".
-        inputbox = self.browser.find_element_by_id("id_new_item")
+        inputbox = self.browser.find_element_by_id("id_text")
         inputbox.send_keys('Learn TDD')
         inputbox.send_keys(Keys.ENTER)
 
@@ -38,12 +35,11 @@ class NewVisitorTest(FunctionalTest):
         self.wait_for_row_in_list_table('2: Learn TDD')
 
         # Satisfied, he goes back to sleep
-        
 
     def test_multiple_users_can_start_lists_at_different_urls(self):
         # Edith starts a new to-do list
         self.browser.get(self.live_server_url)
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
@@ -68,7 +64,7 @@ class NewVisitorTest(FunctionalTest):
 
         # Francis starts a new list by entering a new item. He
         # is less interesting than Edith...
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy milk')
