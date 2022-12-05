@@ -56,6 +56,8 @@ Now we can rerun our functional tests and see if they pass, or get a little furt
 - The scratchpad to-do list
     - A place to write down things that occur to us as we’re coding, so that we can finish up what we’re doing and come back to them later.
 
+- Each test should test one thing
+    - The heuristic is to be suspicious if there’s more than one assertion in a test. Sometimes two assertions are closely related, so they belong together. But often your first draft of a test ends up testing multiple behaviours, and it’s worth rewriting it as several tests. Helper functions can keep them from getting too bloated.
 # Tips
 Use a tests folder
 - Just as you use multiple files to hold your application code, you should split your tests out into multiple files.
