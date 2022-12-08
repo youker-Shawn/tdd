@@ -37,6 +37,21 @@ Once we have a failing unit test, we write the smallest amount of application co
 Now we can rerun our functional tests and see if they pass, or get a little further. That may prompt us to write some new unit tests, and some new code, and so on.
 
 
+# Mock
+When we call send_mail in real life we expect Django to be making a connection to our email provider, and sending an actual email across the public internet. That’s not something we want to happen in our tests. It’s a similar problem whenever you have code that has external side effects—calling an API, sending out a tweet or an SMS or whatever it may be. In our unit tests, we don’t want to be sending out real tweets or API calls across the internet. But we would still like a way of testing that our code is correct. Mocks are the answer.
+
+Mocking and external dependencies
+- We use mocking in unit tests when we have an external dependency that we don’t want to actually use in our tests. A mock is used to simulate the third-party API. Whilst it is possible to "roll your own" mocks in Python, a mocking framework like the mock module provides a lot of helpful shortcuts which will make it easier to write (and more importantly, read) your tests.
+
+Monkeypatching
+- Replacing an object in a namespace at runtime. We use it in our unit tests to replace a real function which has undesirable side effects with a mock object, using the patch decorator.
+
+The patch decorator
+- unittest.mock provides a function called patch, which can be used to "mock out" any object from the module you’re testing. It’s commonly used as a decorator on a test method, or even at the class level, where it’s applied to all the test methods of that class.
+
+Mocks can save you from duplication in your tests
+
+
 # Useful TDD Concepts
 - Regression 逻辑回归
     - When new code breaks some aspect of the application which used to work.

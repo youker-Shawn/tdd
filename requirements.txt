@@ -3,3 +3,4 @@ pytz==2022.6
 selenium==3.141.0
 urllib3==1.26.12
 gunicorn==20.1.0
+Fabric3==1.14.post1
